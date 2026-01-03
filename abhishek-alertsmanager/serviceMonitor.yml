@@ -1,20 +1,22 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
+  name: backend-service-monitor
+  namespace: prometheus
   labels:
-    app: a-service-service-monitor
-    release: monitoring
-  name: a-service-service-monitor
-  namespace: monitoring
+    release: prometheus
 spec:
-  jobLabel: job
-  endpoints:
-    - interval: 2s
-      port: a-service-port
-      path: /metrics
-  selector:
-    matchLabels:
-      app: a-service
   namespaceSelector:
     matchNames:
-      - dev
+    - expense
+
+  selector:
+    matchLabels:
+      component: backend
+      project: expense
+      tier: app
+
+  endpoints:
+  - port: backend   # MUST match service port name
+    path: /metrics
+    interval: 15s
