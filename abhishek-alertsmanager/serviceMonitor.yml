@@ -2,9 +2,9 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: backend-service-monitor
-  namespace: prometheus
+  namespace: monitoring
   labels:
-    release: prometheus
+    release: monitoring
 spec:
   namespaceSelector:
     matchNames:

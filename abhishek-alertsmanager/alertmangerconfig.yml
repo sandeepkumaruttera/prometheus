@@ -2,9 +2,9 @@ apiVersion: monitoring.coreos.com/v1alpha1
 kind: AlertmanagerConfig
 metadata:
   name: main-rules-alert-config
-  namespace: prometheus
+  namespace: monitoring
   labels:
-    release: prometheus
+    release: monitoring
 spec:
   route:
     repeatInterval: 30m
